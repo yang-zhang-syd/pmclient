@@ -28,7 +28,7 @@ class App extends React.Component<{addStock: (symbol: string) => void, symbol: s
   };
 
   private handleSubmitClicked = (event: React.MouseEvent<HTMLInputElement>) => {
-    this.props.addStock(this.state.symbol);
+    this.props.addStock(this.props.symbol);
   };
 }
 

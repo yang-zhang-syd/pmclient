@@ -5,10 +5,10 @@ const types = keyMirror({
 });
 
 const actions = {
-    addStock: (symbol: string) => {
+    addStock: (symbol: string) => ({
         type: types.ADD_STOCK,
         symbol
-    }
+    })
 }
 
 export {actions, types};
