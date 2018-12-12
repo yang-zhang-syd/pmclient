@@ -9,12 +9,16 @@ const { addStock } = actions;
 
 class App extends React.Component<{addStock: (symbol: string) => void, symbol: string}, AppState> {
 
+  state = {
+    symbol: this.props.symbol
+  };
+
   public render() {
     return (
       <div className="App">
         <h1>Portfolio Manager</h1>
         <h2>Stocks</h2>
-        <input type="text" onChange={this.handleAddStockNameChange} value={this.props.symbol} />
+        <input type="text" onChange={this.handleAddStockNameChange} value={this.state.symbol} />
         <input type="submit" value="Add" onClick={this.handleSubmitClicked}/>
       </div>
     );
@@ -28,7 +32,7 @@ class App extends React.Component<{addStock: (symbol: string) => void, symbol: s
   };
 
   private handleSubmitClicked = (event: React.MouseEvent<HTMLInputElement>) => {
-    this.props.addStock(this.props.symbol);
+    this.props.addStock(this.state.symbol);
   };
 }
 
