@@ -1,7 +1,7 @@
 import {types} from './actions';
 
 const initState = {
-    symbol: "123"
+    symbol: ""
 };
 
 export default (state = initState, action: any) => {

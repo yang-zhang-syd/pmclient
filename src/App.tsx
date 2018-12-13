@@ -18,7 +18,7 @@ class App extends React.Component<{addStock: (symbol: string) => void, symbol: s
       <div className="App">
         <h1>Portfolio Manager</h1>
         <h2>Stocks</h2>
-        <input type="text" onChange={this.handleAddStockNameChange} value={this.state.symbol} />
+        <input type="text" onChange={this.handleAddStockNameChange} value={this.state.symbol} placeholder="Stock Name"/>
         <input type="submit" value="Add" onClick={this.handleSubmitClicked}/>
       </div>
     );
