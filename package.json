@@ -6,6 +6,7 @@
     "@types/keymirror": "^0.1.1",
     "@types/react-redux": "^6.0.11",
     "axios": "^0.18.0",
+    "jest-cli": "^20.0.4",
     "keymirror": "^0.1.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
