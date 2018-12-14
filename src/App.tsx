@@ -7,10 +7,11 @@ import { actions } from './redux/actions';
 
 const { addStock } = actions;
 
-class App extends React.Component<{addStock: (symbol: string) => void, symbol: string}, AppState> {
+class App extends React.Component<{addStock: (symbol: string) => void, symbol: string, stock: any}, AppState> {
 
   state = {
-    symbol: this.props.symbol
+    symbol: this.props.symbol,
+    stock: this.props.stock
   };
 
   public render() {
@@ -20,6 +21,7 @@ class App extends React.Component<{addStock: (symbol: string) => void, symbol: s
         <h2>Stocks</h2>
         <input type="text" onChange={this.handleAddStockNameChange} value={this.state.symbol} placeholder="Stock Name"/>
         <input type="submit" value="Add" onClick={this.handleSubmitClicked}/>
+        <p>{JSON.stringify(this.props.stock, null, 2)}</p>
       </div>
     );
   }
@@ -38,7 +40,8 @@ class App extends React.Component<{addStock: (symbol: string) => void, symbol: s
 
 export default connect(
   (state: any) => ({
-      symbol: state.app.symbol
+      symbol: state.app.symbol,
+      stock: state.app.stock
   }), 
   {
     addStock
