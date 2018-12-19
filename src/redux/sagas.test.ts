@@ -1,8 +1,8 @@
-import * as test from 'tape';
 import { createStock } from './sagas';
 import axios from 'axios';
+import { call } from 'redux-saga/effects'
 
-test('createStock saga test', t => {
+test('createStock saga test', () => {
     const gen = createStock({symbol: 'TestSymbol'});
-    t.deepEqual(gen.next().value, axios.post('http://localhost/api/stock', {}), 'createStock must call axios.post');
+    expect(gen.next().value).toEqual(call(axios.post, `http://localhost/api/stock`, {"Symbol": "TestSymbol"}));
 });
