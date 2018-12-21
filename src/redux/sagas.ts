@@ -7,8 +7,14 @@ export function* createStock(action: any) {
     yield put(actions.stockCreated(response.data));
 }
 
+export function* getStocks(action: any) {
+    const response = {data: 'dummy'};
+    yield put(actions.stocksReceived(response.data));
+}
+
 export default function* rootSaga() {
     yield all([
-        takeEvery(actions.ADD_STOCK, createStock)
+        takeEvery(actions.ADD_STOCK, createStock),
+        takeEvery(actions.GET_STOCKS, getStocks)
     ]);
 }
