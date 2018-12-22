@@ -16,9 +16,10 @@ const actions = {
         data
     }),
 
-    getStocks: (pageNum: number) => ({
+    getStocks: (pageNum: number, pageSize: number) => ({
         type: actions.GET_STOCKS,
-        pageNum
+        pageNum,
+        pageSize
     }),
 
     stocksReceived: (data: any) => ({

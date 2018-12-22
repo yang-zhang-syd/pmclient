@@ -8,7 +8,7 @@ export function* createStock(action: any) {
 }
 
 export function* getStocks(action: any) {
-    const response = {data: 'dummy'};
+    const response = yield call(axios.post, `http://localhost/api/stock/stocks/page/${action.pageNum}`, {pageSize: action.pageSize});
     yield put(actions.stocksReceived(response.data));
 }
 
