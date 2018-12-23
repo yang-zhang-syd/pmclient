@@ -5,9 +5,17 @@ import './models/AppState';
 import { AppState } from './models/AppState';
 import { actions } from './redux/actions';
 
-const { addStock } = actions;
+const { addStock, getStocks } = actions;
 
-class App extends React.Component<{addStock: (symbol: string) => void, symbol: string, stock: any}, AppState> {
+interface AppProps {
+  addStock: (symbol: string) => void;
+  getStocks: (pageNum: number, pageSize: number) => void;
+  symbol: string;
+  stock: any;
+  stocks: any;
+}
+
+class App extends React.Component<AppProps, AppState> {
 
   state = {
     symbol: this.props.symbol,
@@ -15,6 +23,9 @@ class App extends React.Component<{addStock: (symbol: string) => void, symbol: s
   };
 
   public render() {
+    var stockList = this.props.stocks.map((s:any) => 
+        <li key={s.id}>{s.symbol}</li>
+      );
     return (
       <div className="App">
         <h1>Portfolio Manager</h1>
@@ -22,8 +33,16 @@ class App extends React.Component<{addStock: (symbol: string) => void, symbol: s
         <input type="text" onChange={this.handleAddStockNameChange} value={this.state.symbol} placeholder="Stock Name"/>
         <input type="submit" value="Add" onClick={this.handleSubmitClicked}/>
         <p>{JSON.stringify(this.props.stock, null, 2)}</p>
+        <br/>
+        <ul>
+          {stockList}
+        </ul>
       </div>
     );
+  }
+
+  public componentDidMount() {
+    this.props.getStocks(1, 10);
   }
 
   private handleAddStockNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,8 +60,10 @@ class App extends React.Component<{addStock: (symbol: string) => void, symbol: s
 export default connect(
   (state: any) => ({
       symbol: state.app.symbol,
-      stock: state.app.stock
+      stock: state.app.stock,
+      stocks: state.app.stocks
   }), 
   {
-    addStock
+    addStock,
+    getStocks
   })(App);

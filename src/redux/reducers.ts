@@ -2,7 +2,8 @@ import {actions} from './actions';
 
 const initState = {
     symbol: "",
-    stock: null
+    stock: null,
+    stocks: []
 };
 
 export default (state = initState, action: any) => {
@@ -16,6 +17,11 @@ export default (state = initState, action: any) => {
             return {
                 ...state,
                 stock: action.data
+            }
+        case actions.STOCKS_RECEIVED:
+            return {
+                ...state,
+                stocks: action.data
             }
         default:
             return state;
