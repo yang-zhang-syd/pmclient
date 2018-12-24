@@ -5,11 +5,12 @@ import './models/AppState';
 import { AppState } from './models/AppState';
 import { actions } from './redux/actions';
 
-const { addStock, getStocks } = actions;
+const { addStock, getStocks, deleteStock } = actions;
 
 interface AppProps {
   addStock: (symbol: string) => void;
   getStocks: (pageNum: number, pageSize: number) => void;
+  deleteStock: (id: number) => void;
   symbol: string;
   stock: any;
   stocks: any;
@@ -43,6 +44,7 @@ class App extends React.Component<AppProps, AppState> {
 
   public componentDidMount() {
     this.props.getStocks(1, 10);
+    this.props.deleteStock(21);
   }
 
   private handleAddStockNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,5 +67,6 @@ export default connect(
   }), 
   {
     addStock,
-    getStocks
+    getStocks,
+    deleteStock,
   })(App);
