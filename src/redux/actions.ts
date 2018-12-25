@@ -7,6 +7,7 @@ const actions = {
     STOCKS_RECEIVED: 'STOCKS_RECEIVED',
     DELETE_STOCK: 'DELETE_STOCK',
     STOCK_DELETED: 'STOCK_DELETED',
+    ADD_TRANSACTION: 'ADD_TRANSACTION',
 
     addStock: (symbol: string) => ({
         type: actions.ADD_STOCK,
