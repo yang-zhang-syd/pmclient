@@ -37,6 +37,12 @@ const actions = {
 
     stockDeleted: () => ({
         type: actions.STOCK_DELETED
+    }),
+
+    // TODO: define static type for transaction data
+    addTransaction: (data: any) => ({
+        type: actions.ADD_TRANSACTION,
+        data
     })
 }
 
