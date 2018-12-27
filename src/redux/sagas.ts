@@ -18,6 +18,12 @@ export function* deleteStock(action: any) {
     yield put(actions.stockDeleted());
 }
 
+export function* addTransaction(action: any) {
+    const response = yield call(axios.post, `http://localhost/api/account/${action.data.accountId}/stock${action.data.stockId}`, action.data);
+    console.log(response);
+    yield put(actions.transactionAdded());
+}
+
 export default function* rootSaga() {
     yield all([
         takeEvery(actions.ADD_STOCK, createStock),

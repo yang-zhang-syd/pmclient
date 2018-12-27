@@ -8,6 +8,7 @@ const actions = {
     DELETE_STOCK: 'DELETE_STOCK',
     STOCK_DELETED: 'STOCK_DELETED',
     ADD_TRANSACTION: 'ADD_TRANSACTION',
+    TRANSACTION_ADDED: 'TRANSACTION_ADDED',
 
     addStock: (symbol: string) => ({
         type: actions.ADD_STOCK,
@@ -43,6 +44,10 @@ const actions = {
     addTransaction: (data: any) => ({
         type: actions.ADD_TRANSACTION,
         data
+    }),
+
+    transactionAdded: () => ({
+        type: actions.TRANSACTION_ADDED
     })
 }
 
