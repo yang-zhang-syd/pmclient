@@ -28,6 +28,7 @@ export default function* rootSaga() {
     yield all([
         takeEvery(actions.ADD_STOCK, createStock),
         takeEvery(actions.GET_STOCKS, getStocks),
-        takeEvery(actions.DELETE_STOCK, deleteStock)
+        takeEvery(actions.DELETE_STOCK, deleteStock),
+        takeEvery(actions.ADD_TRANSACTION, addTransaction)
     ]);
 }
