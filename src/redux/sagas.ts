@@ -14,13 +14,11 @@ export function* getStocks(action: any) {
 
 export function* deleteStock(action: any) {
     const response = yield call(axios.delete, `http://localhost/api/stock/${action.id}`);
-    console.log(response);
     yield put(actions.stockDeleted());
 }
 
 export function* addTransaction(action: any) {
     const response = yield call(axios.post, `http://localhost/api/account/${action.data.accountId}/stock${action.data.stockId}`, action.data);
-    console.log(response);
     yield put(actions.transactionAdded());
 }
 
